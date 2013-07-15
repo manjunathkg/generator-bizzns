@@ -22,29 +22,40 @@ BizznsGenerator.prototype.askFor = function askFor() {
   // have Yeoman greet the user.
   console.log(this.yeoman);
 
-  var prompts = [{
-    type: 'confirm',
-    name: 'someOption',
-    message: 'Would you like to enable this option?',
-    default: true
+  var prompts = [{     
+    name: 'appName',
+    message: 'Please Enter the name of the application to generate?',
+    default: 'pta'
   }];
 
   this.prompt(prompts, function (props) {
-    this.someOption = props.someOption;
+    this.appName = props.appName;
 
     cb();
   }.bind(this));
 };
 
-BizznsGenerator.prototype.app = function app() {
-  this.mkdir('app');
-  this.mkdir('app/templates');
-
-  this.copy('_package.json', 'package.json');
-  this.copy('_bower.json', 'bower.json');
-};
-
 BizznsGenerator.prototype.projectfiles = function projectfiles() {
   this.copy('editorconfig', '.editorconfig');
   this.copy('jshintrc', '.jshintrc');
+  this.copy('_package.json', 'package.json');
+  this.copy('_bower.json', 'bower.json');
+  this.copy('_.bowerrc', '.bowerrc');
+  this.copy('_build.config.js', 'build.config.js');
+  this.copy('_Gruntfile.js', 'Gruntfile.js');
+  this.copy('_module.prefix', 'module.prefix');
+  this.copy('_module.suffix', 'module.suffix');
+  this.copy('_README.md', 'README.md');
+  this.copy('_tools.md', 'tools.md');
 };
+
+
+BizznsGenerator.prototype.app = function app() {
+  //console.log(this.appName);
+  //this.mkdir( this.appName );
+  this.directory('src' , 'src');  
+  this.directory('vendor' , 'vendor');  
+  this.directory('karma' , 'karma'); 
+};
+
+
