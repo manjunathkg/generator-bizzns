@@ -1,25 +1,22 @@
 'use strict';
-var path = require('path');
 var util = require('util');
+var path = require('path');
 var ScriptBase = require('../script-base.js');
-
+var yeoman = require('yeoman-generator');
+ 
 
 module.exports = Generator;
 
-function Generator() {
+function Generator(args, options) { 
   ScriptBase.apply(this, arguments);
-
-  // if the controller name is suffixed with ctrl, remove the suffix
-  // if the controller name is just "ctrl," don't append/remove "ctrl"
-  if (this.name && this.name.toLowerCase() !== 'ctrl' && this.name.substr(-4).toLowerCase() === 'ctrl') {
-    this.name = this.name.slice(0, -4);
-  }
-};
-
+}
 util.inherits(Generator, ScriptBase);
 
+ 
+
 Generator.prototype.createControllerFiles = function createControllerFiles() {
-  this.appTemplate('controller', 'scripts/controllers/' + this.name);
-  this.testTemplate('spec/controller', 'controllers/' + this.name);
-  this.addScriptToIndex('controllers/' + this.name);
+  console.log("*** Inside controller/index.js - this.name is "  + this.name);
+  this.appTemplate('_controller', this.name);
+  this.appTemplate('_app.spec', this.name );
+  //this.addScriptToIndex('controllers/' + this.name);
 };

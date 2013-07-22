@@ -7,26 +7,27 @@ process.logging = process.logging || require('../lib/util/log');
 
 var Generator = module.exports = function Generator(args, options) {
   yeoman.generators.Base.apply(this, arguments);
-  this.argument('appname', { type: String, required: false });
-  this.appname = this.appname || path.basename(process.cwd());
-  this.env.options.appname = this.appname;
-  console.log("app name is  "  +  this.appname);
+  this.argument('subModuleName', { type: String, required: false });
+  this.subModuleName = this.subModuleName || path.basename(process.cwd());
+  this.env.options.subModuleName = this.subModuleName;
+  console.log("subModuleName is  "  +  this.subModuleName);
   // this.indexFile = this.engine(this.read('../../templates/common/index.html'),
   //     this);
 
-  args = ['main'];
+  args = [this.env.options.subModuleName];
+
+  
 
   if (typeof this.env.options.appPath === 'undefined') {
     try {
-      this.env.options.appPath = require(path.join(process.cwd(), 'bower.json')).appPath;
+      this.env.options.appPath = require(path.join(process.cwd(), 'bower.json')).appPath +"/"+ this.subModuleName;
     } catch (e) {}
-    this.env.options.appPath = this.env.options.appPath || 'src/app';
+    this.env.options.appPath = this.env.options.appPath || 'src/app' + "/" + this.subModuleName;
   }
 
   this.appPath = this.env.options.appPath;  
   console.log("appPath is  "  +  this.appPath);
-
-  if (typeof this.env.options.coffee === 'undefined') {
+ if (typeof this.env.options.coffee === 'undefined') {
     this.option('coffee');
 
     // attempt to detect if user is using CS or not
@@ -44,34 +45,13 @@ var Generator = module.exports = function Generator(args, options) {
     this.env.options.minsafe = this.options.minsafe;
     args.push('--minsafe');
   }
-
-  this.hookFor('bizzns:common', {
-    args: args
-  });
-
-  this.hookFor('bizzns:main', {
-    args: args
-  });
+ 
 
   this.hookFor('bizzns:controller', {
      args: args
    });
 
-  this.hookFor('karma', {
-    as: 'app',
-    options: {
-      options: {
-        coffee: this.options.coffee,
-        'skip-install': this.options['skip-install']
-       }
-    }
-  });
-
-  this.on('end', function () {
-    this.installDependencies({ skipInstall: this.options['skip-install'] });
-  });
-
-  this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
+ 
 };
 
 util.inherits(Generator, yeoman.generators.Base);

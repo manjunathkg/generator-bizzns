@@ -1,21 +1,17 @@
-'use strict';
+ 
 var util = require('util');
 var path = require('path');
-var grunt = require('grunt');
 var yeoman = require('yeoman-generator');
 var angularUtils = require('./util.js');
 
 module.exports = Generator;
 
 function Generator() {
-  yeoman.generators.NamedBase.apply(this, arguments);
+  yeoman.generators.NamedBase.apply(this, arguments);   
+  this.appname = this.env.options.appname;
+  console.log("app name in scripte base is " + this.appname);
 
-  try {
-    this.appname = require(path.join(process.cwd(), 'bower.json')).name;
-  } catch (e) {
-    this.appname = path.basename(process.cwd());
-  }
-
+  
   if (typeof this.env.options.appPath === 'undefined') {
     try {
       this.env.options.appPath = require(path.join(process.cwd(), 'bower.json')).appPath;
@@ -23,6 +19,9 @@ function Generator() {
     this.env.options.appPath = this.env.options.appPath || 'src/app';
   }
 
+  this.appPath = this.env.options.appPath;
+  console.log("appPath  " + this.appPath);
+  
   if (typeof this.env.options.testPath === 'undefined') {
     try {
       this.env.options.testPath = require(path.join(process.cwd(), 'bower.json')).testPath;
@@ -36,7 +35,9 @@ function Generator() {
     // attempt to detect if user is using CS or not
     // if cml arg provided, use that; else look for the existence of cs
     if (!this.options.coffee &&
-      this.expandFiles(path.join(this.env.options.appPath, '/**/*.coffee'), {}).length > 0) {
+       this.expandFiles(path.join(__dirname,
+      'src/app/**/*.coffee')).length > 0)
+  {
       this.options.coffee = true;
     }
 
