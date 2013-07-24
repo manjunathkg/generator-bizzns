@@ -1,6 +1,7 @@
 {
   "name": "<%= _.classify(appname) %>",
-  "appPath" : "src/app"
+  "appname": "<%= _.classify(appname) %>",
+  "appPath" : "src/app",
   "version": "0.3.0",
   "devDependencies": {    
     "angular-mocks": "~1.0.7",

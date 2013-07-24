@@ -5,7 +5,11 @@ var fs = require('fs');
 
 module.exports = {
   rewrite: rewrite,
-  rewriteFile: rewriteFile
+  rewriteFile: rewriteFile,
+  convertDotPathToSlashPath: convertDotPathToSlashPath,
+  getLastWordFromSlashPath: getLastWordFromSlashPath,
+  strencode:strencode,
+  strdecode:strdecode
 };
 
 function rewriteFile (args) {
@@ -58,4 +62,72 @@ function rewrite (args) {
   return lines.join('\n');
 }
 
+function convertDotPathToSlashPath(argString){
+   //clean out junk chars
+  var folderString = argString.replace(/[\|&;\$%@"<>\(\)\+,]/g, "");
+
+  //define ends with function
+  if (typeof String.prototype.endsWith !== 'function') {
+    String.prototype.endsWith = function(suffix) {
+        return this.indexOf(suffix, this.length - suffix.length) !== -1;
+    };
+  }
+  
+  //if name ends with "/" remove it
+  if(folderString.endsWith("/")){
+     replacement = '';
+     folderString = folderString.replace(/_([^_]*)$/,replacement+'$1'); 
+  }
+
+
+  //Define contains function
+  String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
+
+  //convert all . with /
  
+
+ console.log("folderString before replacement = " + folderString);
+  if(folderString.contains(".")){ 
+    console.log("In the loop");
+    folderString.replace(/\./g, '/');
+    folderString = folderString.split('.').join('/'); 
+  }
+  
+  console.log("folderString after replacement = " + folderString);
+
+   return folderString;
+}
+
+
+function getLastWordFromSlashPath(slashPath){
+  var lastwordString = slashPath;
+ //Define contains function
+  String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
+
+  if(lastwordString.contains("/")){
+    var splitNameArray = lastwordString.split("/");
+  }
+
+  //get last word
+  var lastWord=lastwordString;
+  if(splitNameArray != null && splitNameArray.length > 0){
+    lastWord = splitNameArray.slice(-1).pop();
+  }
+  
+  if(lastWord == null){
+       lastWord = lastwordString;
+  } 
+
+  console.log("lastword being sent is " + lastWord);
+  return lastWord;
+}
+
+
+
+function strencode( data ) {
+return unescape( encodeURIComponent( JSON.stringify( data ) ) );
+}
+ 
+function strdecode( data ) {
+return JSON.parse( decodeURIComponent( escape ( data ) ) );
+}

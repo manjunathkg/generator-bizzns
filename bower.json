@@ -1,8 +1,7 @@
 {
   "name": "generator-bizzns",
-  "appPath" : "src/app",
-  "testPath" : "src/app",  
-  "version": "0.3.0",
+  "appName" : "",
+  "appPath" : "src/app2",
   "devDependencies": {
     "angular": "~1.0.7",
     "angular-mocks": "~1.0.7",

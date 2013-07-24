@@ -1,4 +1,6 @@
 'use strict';
 
-angular.module('<%= _.camelize(appname) %>App')
+angular.module('<%= _.classify(appname) %>App.<%=_.classify(name)%>-services')
   .value('<%= _.camelize(name) %>', 42);
+
+ 

@@ -16,7 +16,15 @@ var Generator = module.exports = function Generator(args, options) {
 
   args = [this.env.options.subModuleName];
 
-  
+if (typeof this.env.options.appname === 'undefined') {
+    try {
+      this.env.options.appname = require(path.join(process.cwd(), 'bower.json')).appname;
+    } catch (e) {}     
+}
+this.appname = this.env.options.appname;
+
+
+
 
   if (typeof this.env.options.appPath === 'undefined') {
     try {
@@ -27,7 +35,8 @@ var Generator = module.exports = function Generator(args, options) {
 
   this.appPath = this.env.options.appPath;  
   console.log("appPath is  "  +  this.appPath);
- if (typeof this.env.options.coffee === 'undefined') {
+
+if (typeof this.env.options.coffee === 'undefined') {
     this.option('coffee');
 
     // attempt to detect if user is using CS or not
@@ -47,9 +56,25 @@ var Generator = module.exports = function Generator(args, options) {
   }
  
 
+  this.hookFor('bizzns:bizmodule', {
+     args: args
+   });
+
   this.hookFor('bizzns:controller', {
      args: args
    });
+
+  this.hookFor('bizzns:service', {
+     args: args
+   });
+
+  this.hookFor('bizzns:directive', {
+     args: args
+   });
+
+  this.hookFor('bizzns:filter', {
+     args: args
+  });
 
  
 };

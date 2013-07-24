@@ -1,3 +1,5 @@
+(function () {
+
 'use strict';
 
 angular.module('<%= _.classify(appname) %>App', [
@@ -18,6 +20,5 @@ angular.module('<%= _.classify(appname) %>App', [
 })
 
 ;
-
-
-
+ 
+}()); 

@@ -30,5 +30,7 @@ Generator.prototype.createAppFile = function createAppFile() {
 Generator.prototype.createSrcFolders = function createSrcFolders() {
   this.directory('src/assets', 'src/assets');  
   this.directory('src/common', 'src/common');  
-  this.directory('src/less', 'src/less');
+  this.directory('src/less', 'src/less'); 
+  this.directory('vendor', 'vendor'); 
+  this.directory('karma', 'karma');
 };

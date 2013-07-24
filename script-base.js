@@ -15,12 +15,15 @@ function Generator() {
   if (typeof this.env.options.appPath === 'undefined') {
     try {
       this.env.options.appPath = require(path.join(process.cwd(), 'bower.json')).appPath;
+      console.log("*****  Inside script-base *** this.env.options.appPath = " + this.env.options.appPath);
     } catch (e) {}
     this.env.options.appPath = this.env.options.appPath || 'src/app';
+  }else{
+      console.log("Inside else - this.env.options.appPath = " + this.env.options.appPath );
   }
 
   this.appPath = this.env.options.appPath;
-  console.log("appPath  " + this.appPath);
+ // console.log("appPath from require === " + require(path.join(process.cwd(), 'bower.json')).appPath );
   
   if (typeof this.env.options.testPath === 'undefined') {
     try {
@@ -102,3 +105,8 @@ Generator.prototype.addScriptToIndex = function (script) {
     console.log('\nUnable to find '.yellow + fullPath + '. Reference to '.yellow + script + '.js ' + 'not added.\n'.yellow);
   }
 };
+
+ 
+
+
+

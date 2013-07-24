@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('<%= _.camelize(appname) %>App')
-  .factory('<%= _.camelize(name) %>', function() {
+angular.module('<%= _.classify(appname) %>App.<%=_.classify(name)%>-services')
+.factory('<%= _.camelize(name) %>', function() {
     // Service logic
     // ...
 
@@ -13,4 +13,9 @@ angular.module('<%= _.camelize(appname) %>App')
         return meaningOfLife;
       }
     };
-  });
+})
+
+
+  ;
+
+

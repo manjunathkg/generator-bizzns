@@ -1,8 +1,14 @@
+(function () {
+
 'use strict';
 
-angular.module('<%= grunt.util._.camelize(appname) %>App')
-  .filter('<%= _.camelize(name) %>', function() {
+angular.module('<%= _.classify(appname) %>App.<%=_.classify(name)%>-filters',[])
+.filter('<%= _.classify(name) %>_filter', function() {
     return function(input) {
-      return '<%= _.camelize(name) %> filter: ' + input;
+      return '<%= _.classify(name) %> filter: ' + input;
     };
-  });
+});
+
+}()); 
+ 
+ 

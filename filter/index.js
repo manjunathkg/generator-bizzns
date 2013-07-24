@@ -2,7 +2,8 @@
 var path = require('path');
 var util = require('util');
 var ScriptBase = require('../script-base.js');
-var angularUtils = require('../util.js');
+var angularutils = require('../util.js');
+var yeoman = require('yeoman-generator');
 
 
 module.exports = Generator;
@@ -14,7 +15,10 @@ function Generator() {
 util.inherits(Generator, ScriptBase);
 
 Generator.prototype.createFilterFiles = function createFilterFiles() {
-  this.appTemplate('filter', 'scripts/filters/' + this.name);
-  this.testTemplate('spec/filter', 'filters/' + this.name);
-  this.addScriptToIndex('filters/' + this.name);
+var lastWord = angularutils.getLastWordFromSlashPath(this.name); 
+  this.appTemplate('_filter', lastWord+ "-filters");
+  //this.testTemplate('spec/filter', 'filters/' + this.name);
+  //this.addScriptToIndex('filters/' + this.name);
 };
+
+ 

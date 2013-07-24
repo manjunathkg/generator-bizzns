@@ -34,6 +34,7 @@ Generator.prototype.projectfiles = function projectfiles() {
   this.template('_module.suffix', 'module.suffix');
   this.template('_README.md', 'README.md');
   this.copy('_tools.md', 'tools.md');
-  this.copy('_index.html', 'src/index.html');  
+  
+  this.template('_index.html', 'src/index.html');  
   this.template('_setup.sh', 'setup.sh');
 };

@@ -3,6 +3,8 @@ var path = require('path');
 var util = require('util');
 var spawn = require('child_process').spawn;
 var yeoman = require('yeoman-generator'); 
+var angularUtils = require('../util.js');
+var fs = require('fs');
 process.logging = process.logging || require('../lib/util/log');
 
 var Generator = module.exports = function Generator(args, options) {
@@ -13,8 +15,9 @@ var Generator = module.exports = function Generator(args, options) {
   console.log("app name is  "  +  this.appname);
   // this.indexFile = this.engine(this.read('../../templates/common/index.html'),
   //     this);
+ 
 
-  args = ['main'];
+  args = ['main']; 
 
   if (typeof this.env.options.appPath === 'undefined') {
     try {
@@ -25,6 +28,7 @@ var Generator = module.exports = function Generator(args, options) {
 
   this.appPath = this.env.options.appPath;  
   console.log("appPath is  "  +  this.appPath);
+
 
   if (typeof this.env.options.coffee === 'undefined') {
     this.option('coffee');
@@ -53,9 +57,12 @@ var Generator = module.exports = function Generator(args, options) {
     args: args
   });
 
-  this.hookFor('bizzns:controller', {
-     args: args
-   });
+ 
+
+
+  // this.hookFor('bizzns:controller', {
+  //    args: args
+  //  });
 
   this.hookFor('karma', {
     as: 'app',
