@@ -1,3 +1,6 @@
+(function () {
+
+
 'use strict';
 var path = require('path');
 var util = require('util');
@@ -23,7 +26,7 @@ Generator.prototype.createDirectiveFiles = function createDirectiveFiles() {
 };
 
 
-
+}()); 
  
   
 

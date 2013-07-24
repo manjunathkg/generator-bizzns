@@ -1,3 +1,5 @@
+(function () {
+
 'use strict';
 var path = require('path');
 var util = require('util');
@@ -38,3 +40,6 @@ Generator.prototype.projectfiles = function projectfiles() {
   this.template('_index.html', 'src/index.html');  
   this.template('_setup.sh', 'setup.sh');
 };
+
+
+}()); 

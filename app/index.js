@@ -1,3 +1,5 @@
+(function () {
+  
 'use strict';
 var path = require('path');
 var util = require('util');
@@ -81,10 +83,10 @@ var Generator = module.exports = function Generator(args, options) {
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
 };
 
-util.inherits(Generator, yeoman.generators.Base);
-util.inherits(Generator, yeoman.generators.Base);
+util.inherits(Generator, yeoman.generators.Base); 
  
 
+}()); 
  
 
 

@@ -1,3 +1,6 @@
+(function () {
+
+
 'use strict';
 var path = require('path');
 var util = require('util');
@@ -13,8 +16,11 @@ function Generator() {
 
 util.inherits(Generator, ScriptBase);
 
-Generator.prototype.createServiceFiles = function createServiceFiles() {
+Generator.prototype.createProviderFiles = function createProviderFiles() {
   this.appTemplate('service/provider', 'scripts/services/' + this.name);
   this.testTemplate('spec/service', 'services/' + this.name);
   this.addScriptToIndex('services/' + this.name);
 };
+
+
+}()); 

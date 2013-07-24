@@ -1,3 +1,5 @@
+(function () {
+
 'use strict';
 var path = require('path');
 var util = require('util');
@@ -18,8 +20,8 @@ function Generator() {
 
 util.inherits(Generator, ScriptBase);
 
-Generator.prototype.createControllerFiles = function createControllerFiles() {
-  this.appTemplate('controller', 'scripts/controllers/' + this.name);
-  this.testTemplate('spec/controller', 'controllers/' + this.name);
-  this.addScriptToIndex('controllers/' + this.name);
+Generator.prototype.createInstallSiteFiles = function createInstallSiteFiles() {
+   //install site flow comes here
 };
+
+}()); 

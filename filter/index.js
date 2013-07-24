@@ -1,3 +1,6 @@
+(function () {
+
+
 'use strict';
 var path = require('path');
 var util = require('util');
@@ -21,4 +24,6 @@ var lastWord = angularutils.getLastWordFromSlashPath(this.name);
   //this.addScriptToIndex('filters/' + this.name);
 };
 
- 
+
+
+}()); 

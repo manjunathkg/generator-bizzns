@@ -1,3 +1,5 @@
+(function () {
+
 'use strict';
 var util = require('util');
 var path = require('path');
@@ -14,7 +16,7 @@ function Generator() {
 util.inherits(Generator, ScriptBase);
 
 Generator.prototype.createAppFile = function createAppFile() {
-  console.log("******* about to template app "   );
+  console.log("******* about to template main app "   );
   this.appTemplate('_app', 'app');
    //app spec file
 
@@ -34,3 +36,5 @@ Generator.prototype.createSrcFolders = function createSrcFolders() {
   this.directory('vendor', 'vendor'); 
   this.directory('karma', 'karma');
 };
+
+}()); 

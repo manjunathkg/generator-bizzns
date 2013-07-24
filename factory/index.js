@@ -1,3 +1,5 @@
+(function () {
+
 'use strict';
 var path = require('path');
 var util = require('util');
@@ -13,8 +15,10 @@ function Generator() {
 
 util.inherits(Generator, ScriptBase);
 
-Generator.prototype.createServiceFiles = function createServiceFiles() {
-  this.appTemplate('service/factory', 'scripts/services/' + this.name);
-  this.testTemplate('spec/service', 'services/' + this.name);
-  this.addScriptToIndex('services/' + this.name);
+Generator.prototype.createFactoryFiles = function createFactoryFiles() {
+  var lastWord = angularutils.getLastWordFromSlashPath(this.name);
+  this.appTemplate('service/constant', lastWord+ "-factory"); 
 };
+
+
+}());
