@@ -50,18 +50,18 @@ Generator.prototype.projectfiles = function projectfiles() {
   this.sourceRoot(path.join(__dirname, '../templates/common'));
   //convert any dots in path to /
   var nameWithSlashPath = angularutils.convertDotPathToSlashPath(this.name);
-  this.template('_editorconfig', nameWithSlashPath + '/.editorconfig');
-  this.template('_jshintrc', nameWithSlashPath +'/.jshintrc');
-  this.template('_package.json', nameWithSlashPath +'/package.json');
-  this.template('_bower.json', nameWithSlashPath +'/bower.json');
-  this.template('_.bowerrc', nameWithSlashPath +'./bowerrc');
-  this.template('_build.config.js', nameWithSlashPath +'/build.config.js');
-  this.copy('_Gruntfile.js', nameWithSlashPath + '/Gruntfile.js');
-  this.template('_module.prefix', nameWithSlashPath +'/module.prefix');
-  this.template('_module.suffix', nameWithSlashPath +'/module.suffix');
-  this.template('_README.md', nameWithSlashPath +'/README.md');
-  this.copy('_tools.md', nameWithSlashPath + nameWithSlashPath +'/tools.md'); 
-  this.template('_setup.sh', nameWithSlashPath +'/setup.sh');  
+  this.template('_editorconfig', this.appPath +   '/.editorconfig');
+  this.template('_jshintrc', this.appPath +  +'/.jshintrc');
+  this.template('_package.json', this.appPath +'/package.json');
+  this.template('_bower.json', this.appPath +'/bower.json');
+  this.template('_.bowerrc', this.appPath +'/.bowerrc');
+  this.template('_build.config.js', this.appPath +'/build.config.js');
+  this.copy('_Gruntfile.js', this.appPath + '/Gruntfile.js');
+  this.template('_module.prefix', this.appPath +'/module.prefix');
+  this.template('_module.suffix', this.appPath +'/module.suffix');
+  this.template('_README.md', this.appPath +'/README.md');
+  this.copy('_tools.md', this.appPath + '/tools.md'); 
+  this.template('_setup.sh', this.appPath +'/setup.sh');  
 };
 
 
