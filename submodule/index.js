@@ -3,29 +3,30 @@ var path = require('path');
 var util = require('util');
 var spawn = require('child_process').spawn;
 var yeoman = require('yeoman-generator'); 
+var angularutils = require('../util.js');
 process.logging = process.logging || require('../lib/util/log');
 
 var Generator = module.exports = function Generator(args, options) {
   yeoman.generators.Base.apply(this, arguments);
-  this.argument('subModuleName', { type: String, required: false });
-  this.subModuleName = this.subModuleName || path.basename(process.cwd());
-  this.env.options.subModuleName = this.subModuleName;
-  console.log("subModuleName is  "  +  this.subModuleName);
-  // this.indexFile = this.engine(this.read('../../templates/common/index.html'),
-  //     this);
 
-  args = [this.env.options.subModuleName];
-
-if (typeof this.env.options.appname === 'undefined') {
+  //Determine Main application name
+  if (typeof this.env.options.appname === 'undefined') {
     try {
       this.env.options.appname = require(path.join(process.cwd(), 'bower.json')).appname;
     } catch (e) {}     
-}
-this.appname = this.env.options.appname;
+  }
+  this.appname = this.env.options.appname;
 
+  //Determine Sum Module Name  
+  this.argument('subModuleName', { type: String, required: false });
+  this.subModuleName = this.subModuleName || path.basename(process.cwd());
+  this.subModuleName =this.env.options.subModuleName = angularutils.convertDotPathToSlashPath(this.subModuleName);
+  console.log("subModuleName is  "  +  this.subModuleName);
+  this.subModuleName = this.env.options.subModuleName;
+  args = [this.env.options.subModuleName];
+  
 
-
-
+  //Determine full App Path - src/app + submodule path
   if (typeof this.env.options.appPath === 'undefined') {
     try {
       this.env.options.appPath = require(path.join(process.cwd(), 'bower.json')).appPath +"/"+ this.subModuleName;
@@ -33,10 +34,11 @@ this.appname = this.env.options.appname;
     this.env.options.appPath = this.env.options.appPath || 'src/app' + "/" + this.subModuleName;
   }
 
-  this.appPath = this.env.options.appPath;  
+  this.appPath = this.env.options.appPath  
   console.log("appPath is  "  +  this.appPath);
 
-if (typeof this.env.options.coffee === 'undefined') {
+  //Handle coffee files if needed.. 
+  if (typeof this.env.options.coffee === 'undefined') {
     this.option('coffee');
 
     // attempt to detect if user is using CS or not
@@ -79,8 +81,7 @@ if (typeof this.env.options.coffee === 'undefined') {
  
 };
 
-util.inherits(Generator, yeoman.generators.Base);
-util.inherits(Generator, yeoman.generators.Base);
+util.inherits(Generator, yeoman.generators.Base); 
  
 
  

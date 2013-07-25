@@ -14,13 +14,9 @@ function Generator() {
 
 util.inherits(Generator, yeoman.generators.Base);
 
-Generator.prototype.setupEnv = function setupEnv() {
-  // Copies the contents of the generator `templates`
-  // directory into your users new application path
+Generator.prototype.setupEnv = function setupEnv() { 
   console.log("__dirname ********  == " + __dirname);
-  this.sourceRoot(path.join(__dirname, '../templates/common'));
-  //this.directory('root', '.', true);
-  //this.template('_gitignore', '.gitignore');
+  this.sourceRoot(path.join(__dirname, '../templates/common')); 
 };
 
 
@@ -38,9 +34,7 @@ Generator.prototype.projectfiles = function projectfiles() {
   this.copy('_tools.md', 'tools.md');
   
   this.template('_index.html', 'src/index.html');  
-  this.template('_setup.sh', 'setup.sh');
-
-  
+  this.template('_setup.sh', 'setup.sh');  
 };
 
 

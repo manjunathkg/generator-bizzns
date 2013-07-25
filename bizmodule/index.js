@@ -18,20 +18,54 @@ function Generator(args, options) {
 }
 util.inherits(Generator, ScriptBase);
 
- 
+
 
 Generator.prototype.createSubmoduleFiles = function createSubmoduleFiles() {  
   console.log("***************  CREATING SUBMODULE FILES ******* for " + this.name);
+    
+   //convert any dots in path to /
+   var moduleFileName = angularutils.convertDotPathToSlashPath(this.name);
 
    //Got cleaned up version of submodule path here.
      var appname = this.env.options.appname;
 	 var lastWord = angularutils.getLastWordFromSlashPath(this.name);
-	 console.log("** Last word returened was " + lastWord);
-	 this.appTemplate('_submodule', lastWord ); 
-	 this.htmlTemplate('_page.tpl.html', _.classify(this.name)+ 'Home.tpl.html'); 
-	 this.addSubModuleToAppJS(appname, this.name);
-	 this.addSubModuleNavToIndex(this.name, _.capitalize(lastWord));
+	 console.log("** Last word returened was *** " + lastWord);
+	 this.lastWord = lastWord;
+	 this.env.options.lastWord = lastWord;
+	
+	 this.appTemplate('submodule/_submodule', lastWord ); //if lastword is pta, create pta.js under the path
+	 this.htmlTemplate('_page.tpl.html', _.classify(this.name)+ 'Home.tpl.html'); //home page template for the module
+	 console.log("appname = " + appname);
+   console.log("moduleFileName = " + moduleFileName);
+   this.addSubModuleToAppJS(appname, moduleFileName);					   //update app.js
+	 this.addSubModuleNavToIndex(moduleFileName, _.capitalize(lastWord));  //update index.html
+	 this.htmlTemplate('submodule/_index.html', '/index.html' );      
+   this.appTemplate('submodule/_app', 'app');
+
 };
+
+//Make submodules a stand alone app - helps in testing and modularity
+Generator.prototype.projectfiles = function projectfiles() {
+   console.log("__dirname = " + __dirname);
+  this.sourceRoot(path.join(__dirname, '../templates/common'));
+  //convert any dots in path to /
+  var nameWithSlashPath = angularutils.convertDotPathToSlashPath(this.name);
+  this.template('_editorconfig', nameWithSlashPath + '/.editorconfig');
+  this.template('_jshintrc', nameWithSlashPath +'/.jshintrc');
+  this.template('_package.json', nameWithSlashPath +'/package.json');
+  this.template('_bower.json', nameWithSlashPath +'/bower.json');
+  this.template('_.bowerrc', nameWithSlashPath +'./bowerrc');
+  this.template('_build.config.js', nameWithSlashPath +'/build.config.js');
+  this.copy('_Gruntfile.js', nameWithSlashPath + '/Gruntfile.js');
+  this.template('_module.prefix', nameWithSlashPath +'/module.prefix');
+  this.template('_module.suffix', nameWithSlashPath +'/module.suffix');
+  this.template('_README.md', nameWithSlashPath +'/README.md');
+  this.copy('_tools.md', nameWithSlashPath + nameWithSlashPath +'/tools.md'); 
+  this.template('_setup.sh', nameWithSlashPath +'/setup.sh');  
+};
+
+
+
 
 
 }()); 

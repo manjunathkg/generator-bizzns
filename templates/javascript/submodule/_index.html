@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="<%= _.classify(lastWord) %>App" ng-controller="<%= _.classify(lastWord) %>AppCtrl">
+  <head>
+    <title><%= _.classify(lastWord) %>App</title>
+
+
+    <!-- font awesome from BootstrapCDN -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+    <!-- compiled CSS -->
+
+    <!--  REMOVE the space bewteen < and %  -->
+      <[%   styles.forEach( function ( file ) {   %]>
+      <link rel="stylesheet" type="text/css" href="<[%= file %]>" /> <[% }); %]>
+     <!--  END - REMOVE the space bewteen < and %  -->
+
+
+    <!--[if IE 7>
+    <link rel="stylesheet" href="assets/font-awesome-ie7.min.css />
+    <![endif]-->
+
+    <!-- compiled JS -->
+    <!--  REMOVE the [ and ] chars bewteen < and %   --> 
+      <[% scripts.forEach( function ( file ) { %]>
+      <script type="text/javascript" src="<[%= file %]>"></script><[% }); %]>
+      <!--  END - REMOVE the space bewteen < and %  -->
+
+
+    <!-- it's stupid to have to load it here, but this is for the +1 button -->
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+      { "parsetags": "explicit" }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <h3 class="muted">bizzns-generator <small> </h3>
+
+         
+                
+              </ul> <!--Insert SubModules above this -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" ui-view></div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner"> Footer comes here
+ 
+          		
+
+ 
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

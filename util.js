@@ -13,12 +13,16 @@ module.exports = {
 };
 
 function rewriteFile (args) {
+  console.log("util :: rewriteFile :: args.path =  " + args.path);
+  console.log("util :: rewriteFile :: process.cwd =  " + process.cwd());
   args.path = args.path || process.cwd();
+  console.log("util :: rewriteFile :: args.path =  " + args.path);
   var fullPath = path.join(args.path, args.file);
+  console.log("util :: rewriteFile :: fullPath ===========>>>>>>>>  " + fullPath);
 
   args.haystack = fs.readFileSync(fullPath, 'utf8');
   var body = rewrite(args);
-
+  console.log("util :: rewriteFile :: writing to fullPath =  " + fullPath);
   fs.writeFileSync(fullPath, body);
 }
 
@@ -100,7 +104,8 @@ function convertDotPathToSlashPath(argString){
 
 
 function getLastWordFromSlashPath(slashPath){
-  var lastwordString = slashPath;
+  var slashPathConterted = this.convertDotPathToSlashPath(slashPath);
+  var lastwordString = slashPathConterted;
  //Define contains function
   String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
 

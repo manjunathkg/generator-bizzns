@@ -111,11 +111,11 @@ Generator.prototype.addScriptToIndex = function (script) {
 
 Generator.prototype.addSubModuleNavToIndex = function (url, linkName) {
   try {
-    var appPath = this.env.options.appPath;
+    
     var fullPath = path.join('src', 'index.html');
     console.log("Script-base -addSubModuleNavToIndex - :: url =  " + url + " and linkName == " + linkName);
     console.log("fullPath == " + fullPath);
-
+    
     angularUtils.rewriteFile({
       file: fullPath,
       needle: '</ul><!--Insert SubModules above this -->',
@@ -141,8 +141,11 @@ Generator.prototype.addSubModuleNavToIndex = function (url, linkName) {
 
 Generator.prototype.addSubModuleToAppJS = function (appname,submodulename) {
   try {
-    var appPath = this.env.options.appPath;
+    
     var fullPath = path.join('src/app', 'app.js');
+    console.log(" -------->>>>>  addSubModuleToAppJS :: fullPath = " + fullPath);
+    console.log(" addSubModuleToAppJS :: appname = " + appname);
+    console.log(" addSubModuleToAppJS :: submodulename = " + submodulename);
     angularUtils.rewriteFile({
       file: fullPath,
       needle: '//insert here',
