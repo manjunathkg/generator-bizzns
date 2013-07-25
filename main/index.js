@@ -5,6 +5,9 @@ var util = require('util');
 var path = require('path');
 var ScriptBase = require('../script-base.js');
 var yeoman = require('yeoman-generator');
+var _    = require('lodash'); 
+_.str = require('underscore.string'); 
+_.mixin(_.str.exports());
 
 
 module.exports = Generator;
@@ -18,6 +21,8 @@ util.inherits(Generator, ScriptBase);
 Generator.prototype.createAppFile = function createAppFile() {
   console.log("******* about to template main app "   );
   this.appTemplate('_app', 'app');
+  console.log("******* About to template home page");
+  this.htmlTemplate('_page.tpl.html', _.classify(this.name)+ 'Home.tpl.html');
    //app spec file
 
   console.log("******* about to template app.spec "   );

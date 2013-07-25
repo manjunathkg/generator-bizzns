@@ -39,6 +39,8 @@ Generator.prototype.projectfiles = function projectfiles() {
   
   this.template('_index.html', 'src/index.html');  
   this.template('_setup.sh', 'setup.sh');
+
+  
 };
 
 

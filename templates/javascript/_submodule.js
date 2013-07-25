@@ -26,29 +26,22 @@ angular.module('<%= _.classify(appname) %>App.<%=_.classify(name)%>', [
   '<%= _.classify(appname) %>App.<%=_.classify(name)%>-services',
   '<%= _.classify(appname) %>App.<%=_.classify(name)%>-directives',
   '<%= _.classify(appname) %>App.<%=_.classify(name)%>-filters'
-	])
+	]) //module
 
 /**
  * Each section or module of the site can also have its own routes. AngularJS
  * will handle ensuring they are all available at run-time, but splitting it
  * this way makes each module more "self-contained".
  */
-.config(function config( $stateProvider ) {
+.config(function config( $stateProvider,$urlRouterProvider  ) {
   $stateProvider.state( '<%= _.classify(name) %>_home', {
-    url: '/<%=name %>',
-    views: {
-      "<%= _.classify(name) %>_main": {
-        controller: '<%= _.classify(name) %>-controller',
-        templateUrl: '<%=name%>/<%= _.classify(name) %>-tpl.html'
-      }
-    }
+    url: '/<%=name %>',     
+    controller: '<%= _.classify(name) %>_controller',
+    templateUrl: '<%=name%>/<%= _.classify(name) %>Home.tpl.html'
+       
   });
 })
-
  
-
- 
-
 ;
 
 }()); 

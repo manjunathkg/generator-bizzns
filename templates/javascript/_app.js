@@ -3,14 +3,16 @@
 'use strict';
 
 angular.module('<%= _.classify(appname) %>App', [
-  'templates-app',
+  //insert here
+  'templates-app',  
   'templates-common',
-  '<%= _.classify(appname) %>.home',
-  '<%= _.classify(appname) %>.about',
+  'titleService',
+  'plusOne', 
   'ui.state',
-  'ui.route'])
+  'ui.route'
+])  //module
 .config( function <%= _.classify(appname) %>Config ( $stateProvider, $urlRouterProvider ) {
-  $urlRouterProvider.otherwise( '/home' );
+  $urlRouterProvider.otherwise( '/pta' );
 })
 .run( function run ( titleService ) {
   titleService.setSuffix( ' | <%= _.classify(appname) %>App' );

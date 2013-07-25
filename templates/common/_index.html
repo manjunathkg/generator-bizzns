@@ -10,8 +10,8 @@
     <!-- compiled CSS -->
 
     <!--  REMOVE the space bewteen < and %  -->
-      < %   styles.forEach( function ( file ) {   % >
-      <link rel="stylesheet" type="text/css" href="< %= file % >" /> < % }); % >
+      <[%   styles.forEach( function ( file ) {   %]>
+      <link rel="stylesheet" type="text/css" href="<[%= file %]>" /> <[% }); %]>
      <!--  END - REMOVE the space bewteen < and %  -->
 
 
@@ -20,9 +20,9 @@
     <![endif]-->
 
     <!-- compiled JS -->
-    <!--  REMOVE the space bewteen < and %  --> 
-      < % scripts.forEach( function ( file ) { % >
-      <script type="text/javascript" src="< %= file % >"></script>< % }); % >
+    <!--  REMOVE the [ and ] chars bewteen < and %   --> 
+      <[% scripts.forEach( function ( file ) { %]>
+      <script type="text/javascript" src="<[%= file %]>"></script><[% }); %]>
       <!--  END - REMOVE the space bewteen < and %  -->
 
 
@@ -34,43 +34,43 @@
   <body>
     <div class="container">
       <div class="masthead">
-        <h3 class="muted">bizzns-generator <small><a
-            href="http://github.com/manjunathkg/generator-bizzns/blob/master/CHANGELOG.md">version comes here</h3>
+        <h3 class="muted">bizzns-generator <small> </h3>
 
         <div class="navbar">
           <div class="navbar-inner">
             <div class="container">
               <ul class="nav">
-                <li ui-route="/home" ng-class="{active:$uiRoute}">
-                  <a href="#/home">
+                <li>
+                  <a href="#/pta">
                     <i class="icon-home"></i>
-                    Home
+                    PTA
                   </a>
                 </li>
-                <li ui-route="/about" ng-class="{active:$uiRoute}">
-                  <a href="#/about">
+                <li>
+                  <a href="#/pta/classrooms">
                     <i class="icon-info-sign"></i>
-                    What is it?
+                    Classrooms
                   </a>
                 </li>
                 <li>
-                  <a href="https://github.com/manjunathkg/generator-bizzns#readme">
-                    <i class="icon-book"></i>
-                    Read the Docs
+                  <a href="#/pta/events">
+                    <i class="icon-info-sign"></i>
+                    Events
                   </a>
                 </li>
                 <li>
-                  <a href="https://github.com/manjunathkg/generator-bizzns">
-                    <i class="icon-github-alt"></i>
-                    Github
+                  <a href="#/pta/setup">
+                    <i class="icon-info-sign"></i>
+                    Setup
                   </a>
                 </li>
-                <li>
-                  <a href="https://github.com/manjunathkg/generator-bizzns/issues">
-                    <i class="icon-comments"></i>
-                    Support
+                <li ui-route="PtaClassrooms_main" ng-class="{active:$uiRoute}">
+                  <a href="#/pta/teachers">
+                    <i class="icon-info-sign"></i>
+                    Teachers
                   </a>
                 </li>
+                
               </ul>
             </div>
           </div>
@@ -78,7 +78,7 @@
       </div>
     </div>
 
-    <div class="container" ui-view="main"></div>
+    <div class="container" ui-view></div>
 
     <footer class="footer">
       <div class="container">

@@ -3,6 +3,9 @@ var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 var angularUtils = require('./util.js');
+var _    = require('lodash'); 
+_.str = require('underscore.string'); 
+_.mixin(_.str.exports());
 
 module.exports = Generator;
 
@@ -106,7 +109,51 @@ Generator.prototype.addScriptToIndex = function (script) {
   }
 };
 
- 
+Generator.prototype.addSubModuleNavToIndex = function (url, linkName) {
+  try {
+    var appPath = this.env.options.appPath;
+    var fullPath = path.join('src', 'index.html');
+    console.log("Script-base -addSubModuleNavToIndex - :: url =  " + url + " and linkName == " + linkName);
+    console.log("fullPath == " + fullPath);
+
+    angularUtils.rewriteFile({
+      file: fullPath,
+      needle: '</ul><!--Insert SubModules above this -->',
+      splicable: [
+                '<li> <a href="#/' 
+                    + url  
+                    + '"><i class="icon-info-sign"></i>' 
+                    + linkName 
+                    + ' </a>  </li> '
+      ]
+    });
+  } catch (e) {
+    console.log('\nUnable to find '.yellow + fullPath + '. Reference to '.yellow + url + " OR  " + linkName + '.js ' + 'not added.\n'.yellow);
+  }
+
+
+
+};
+
+
+
+
+
+Generator.prototype.addSubModuleToAppJS = function (appname,submodulename) {
+  try {
+    var appPath = this.env.options.appPath;
+    var fullPath = path.join('src/app', 'app.js');
+    angularUtils.rewriteFile({
+      file: fullPath,
+      needle: '//insert here',
+      splicable: [
+        '\'' +  _.classify(appname)+ 'App.' + _.classify(submodulename) + '\'' + ',' 
+      ]
+    });
+  } catch (e) {
+    console.log('\nUnable to find '.yellow + fullPath + '. Reference to '.yellow + appname + ' or  ' + submodulename  + 'not added.\n'.yellow);
+  }
+};
 
 
 
