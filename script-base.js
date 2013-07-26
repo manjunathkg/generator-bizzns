@@ -118,7 +118,7 @@ Generator.prototype.addSubModuleNavToIndex = function (url, linkName) {
     
     angularUtils.rewriteFile({
       file: fullPath,
-      needle: '</ul> <!--Insert SubModules above this -->',
+      needle: '</ul><!--Insert SubModules above this -->',
       splicable: [
                 '<li> <a href="#/' 
                     + url  

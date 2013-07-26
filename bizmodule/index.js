@@ -50,8 +50,8 @@ Generator.prototype.projectfiles = function projectfiles() {
   this.sourceRoot(path.join(__dirname, '../templates/common'));
   //convert any dots in path to /
   var nameWithSlashPath = angularutils.convertDotPathToSlashPath(this.name);
-  this.template('_editorconfig', this.appPath +   '/.editorconfig');
-  this.template('_jshintrc', this.appPath +  +'/.jshintrc');
+  this.template('_editorconfig', this.appPath + '/.editorconfig');
+  this.template('_jshintrc', this.appPath +  '/.jshintrc');
   this.template('_package.json', this.appPath +'/package.json');
   this.template('_bower.json', this.appPath +'/bower.json');
   this.template('_.bowerrc', this.appPath +'/.bowerrc');

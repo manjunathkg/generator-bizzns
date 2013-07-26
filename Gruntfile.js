@@ -104,7 +104,7 @@ module.exports = function ( grunt ) {
       build_appjs: {
         files: [
           {
-            src: [ '<%= app_files.js %>' ],
+            src: [ '<%= app_files.js %>','<%= app_files.html %>','<%= app_files.atpl %>' ],
             dest: '<%= build_dir %>/',
             cwd: '.',
             expand: true
@@ -350,6 +350,7 @@ module.exports = function ( grunt ) {
         src: [
           '<%= vendor_files.js %>',
           '<%= build_dir %>/src/**/*.js',
+          '<%=build_dir%>/index.html',
           '<%= html2js.common.dest %>',
           '<%= html2js.app.dest %>',
           '<%= vendor_files.css %>',
@@ -429,7 +430,7 @@ module.exports = function ( grunt ) {
         files: [ 
           '<%= app_files.js %>'
         ],
-        tasks: [ 'jshint:src', 'karma:unit:run', 'copy:build_appjs' ]
+        tasks: [ 'jshint:src', 'karma:unit:run','html2js:app', 'index:build','copy:build_appjs'  ]
       },
 
       /**

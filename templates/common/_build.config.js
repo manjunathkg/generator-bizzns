@@ -20,7 +20,13 @@ module.exports = {
    * app's unit tests.
    */
   app_files: {
-    js: [ 'src/**/*.js', '!src/**/*.spec.js' ],
+    js: [ 'src/**/*.js', 
+          '!src/**/*/*.spec.js', 
+          '!**/*/Gruntfile.js',
+          '!**/*/build.config.js',
+          '!**/karma*.js',
+          '!**bower*.js'
+       ],
     jsunit: [ 'src/**/*.spec.js' ],
     
     coffee: [ 'src/**/*.coffee', '!src/**/*.spec.coffee' ],
@@ -29,7 +35,7 @@ module.exports = {
     atpl: [ 'src/app/**/*.tpl.html' ],
     ctpl: [ 'src/common/**/*.tpl.html' ],
 
-    html: [ 'src/index.html' ],
+    html: [ 'src/index.html', 'src/**/*.html' ],
     less: 'src/less/main.less'
   },
 
