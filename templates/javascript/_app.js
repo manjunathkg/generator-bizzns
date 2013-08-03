@@ -8,16 +8,39 @@ angular.module('<%= _.classify(appname) %>App', [
   'templates-common',
   'ui.state',
   'ui.route',
-  'services.commonServices' 
+  'services.commonServices' ,
+  'security'
 ])  //module
-.config( function <%= _.classify(appname) %>Config ( $stateProvider, $urlRouterProvider ) {
+.config( function <%= _.classify(appname) %>Config ( $stateProvider,$locationProvider, $urlRouterProvider ) {
+  $locationProvider.html5Mode(true);
   $urlRouterProvider.otherwise( '/' );
+}) 
+.constant('firebaseURL',  'https://bizzns.firebaseIO.com/databases/<%= _.classify(appname) %>' )
+.constant('MONGOLAB_CONFIG', {
+  baseUrl: '/databases/',
+  dbName: '<%= _.classify(appname) %>'
 })
-.constant('firebaseURL',  'https://bizzns.firebaseIO.com/<%= _.classify(appname) %>' )
+.constant('I18N.MESSAGES', {
+  'errors.route.changeError':'Route change error',
+  'crud.user.save.success':"A user with id '{{id}}' was saved successfully.",
+  'crud.user.remove.success':"A user with id '{{id}}' was removed successfully.",
+  'crud.user.remove.error':"Something went wrong when removing user with id '{{id}}'.",
+  'crud.user.save.error':"Something went wrong when saving a user...",
+  'crud.project.save.success':"A project with id '{{id}}' was saved successfully.",
+  'crud.project.remove.success':"A project with id '{{id}}' was removed successfully.",
+  'crud.project.save.error':"Something went wrong when saving a project...",
+  'login.reason.notAuthorized':"You do not have the necessary access permissions.  Do you want to login as someone else?",
+  'login.reason.notAuthenticated':"You must be logged in to access this part of the application.",
+  'login.error.invalidCredentials': "Login failed.  Please check your credentials and try again.",
+  'login.error.serverError': "There was a problem with authenticating: {{exception}}."
+})
 .run( function run ( titleService ) {
   titleService.setSuffix( ' | <%= _.classify(appname) %>App' );
 })
-
+.run( function run(security){
+  security.requestCurrentUser();
+})
+ 
 .controller( '<%= _.classify(appname) %>AppCtrl', 
 	function AppCtrl ( $scope, $location,angularFire,firebaseURL,firebaseService ) {
 

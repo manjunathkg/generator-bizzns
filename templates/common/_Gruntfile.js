@@ -29,6 +29,16 @@ module.exports = function ( grunt ) {
    * Load in our build configuration file.
    */
   var userConfig = require( './build.config.js' );
+  
+  // Print a timestamp (useful for when watching)
+  grunt.registerTask('timestamp', function() {
+    grunt.log.subhead(Date());
+  });
+
+
+
+
+
 
   /**
    * This is the configuration object Grunt uses to give each plugin its 

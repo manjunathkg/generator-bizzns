@@ -42,4 +42,12 @@ Generator.prototype.createSrcFolders = function createSrcFolders() {
   this.directory('karma', 'karma');
 };
 
+
+
+this.hookFor('bizzns:server', {
+     args: args
+});
+
+
+
 }()); 

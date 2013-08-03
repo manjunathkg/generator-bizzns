@@ -11,7 +11,7 @@
 
     <!--  REMOVE the space bewteen < and %  -->
       <[%   styles.forEach( function ( file ) {   %]>
-      <link rel="stylesheet" type="text/css" href="<[%= file %]>" /> <[% }); %]>
+      <link rel="stylesheet" type="text/css" href="/static/<[%= file %]>" /> <[% }); %]>
      <!--  END - REMOVE the space bewteen < and %  -->
 
 
@@ -22,7 +22,7 @@
     <!-- compiled JS -->
     <!--  REMOVE the [ and ] chars bewteen < and %   --> 
       <[% scripts.forEach( function ( file ) { %]>
-      <script type="text/javascript" src="<[%= file %]>"></script><[% }); %]>
+      <script type="text/javascript" src="/static/<[%= file %]>"></script><[% }); %]>
       <!--  END - REMOVE the space bewteen < and %  -->
 
 
