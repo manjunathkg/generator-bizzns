@@ -12,8 +12,12 @@ _.mixin(_.str.exports());
 
 module.exports = Generator;
 
-function Generator() {
+function Generator(args, options) {
   ScriptBase.apply(this, arguments);
+
+  this.hookFor('bizzns:server', {
+     args: args
+  });
 }
 
 util.inherits(Generator, ScriptBase);
@@ -44,9 +48,7 @@ Generator.prototype.createSrcFolders = function createSrcFolders() {
 
 
 
-this.hookFor('bizzns:server', {
-     args: args
-});
+
 
 
 
