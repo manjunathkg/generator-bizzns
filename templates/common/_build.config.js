@@ -66,6 +66,7 @@ module.exports = {
       'vendor/mongolab/mongolab-resource.js'
     ],
     css: [
+      'src/**/*.css'
     ]
   }
 };

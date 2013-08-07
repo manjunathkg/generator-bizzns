@@ -62,6 +62,7 @@ module.exports = {
       'vendor/angular-ui-utils/modules/route/route.js'
     ],
     css: [
+      'src/**/*.css'
     ]
   }
 };

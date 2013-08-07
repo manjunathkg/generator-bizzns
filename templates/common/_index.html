@@ -32,45 +32,25 @@
     </script>
   </head>
   <body>
-    <div class="container">
-      <div class="masthead">
-        <h3 class="muted">bizzns-generator <small> </h3>
+    <admin-top-header></admin-top-header>
+    <admin-mainnav></admin-mainnav>
 
-        <div class="navbar">
-          <div class="navbar-inner">
-            <div class="container">
-              <ul class="nav">
-                
-                
-              </ul><!--Insert SubModules above this -->
-            </div>
+    <div class="container" ui-view>
+      
+      <ul ng-controller="<%= _.classify(appname) %>AppCtrl">
+         <li>
+          <div>bizzns here is </div>
+          <hr/>
+          <div>
+            {{bizzns}}
+
           </div>
-        </div>
-      </div>
+        </li>
+      </ul>
+
     </div>
 
-    <div class="container" ui-view></div>
-
-    <ul ng-controller="<%= _.classify(appname) %>AppCtrl">
-       <li>
-        <div>bizzns here is </div>
-        <hr/>
-        <div>
-          {{bizzns}}
-
-        </div>
-      </li>
-    </ul>
-
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-inner">
-          <p>
-            (c) 2013 bizns inc.              
-          </p>
-        </div>
-      </div>
-    </footer>
+    <admin-footer></admin-footer>
 
     <script src="http://localhost:35729/livereload.js"></script>
     

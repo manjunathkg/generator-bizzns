@@ -40,9 +40,10 @@ function Generator() {
 
     // attempt to detect if user is using CS or not
     // if cml arg provided, use that; else look for the existence of cs
+    console.log("__dirname ========= > " + __dirname);
     if (!this.options.coffee &&
        this.expandFiles(path.join(__dirname,
-      'src/app/**/*.coffee')).length > 0)
+      'src/app/**/*.coffee'), this.env.options).length > 0)
   {
       this.options.coffee = true;
     }
@@ -110,12 +111,10 @@ Generator.prototype.addScriptToIndex = function (script) {
 };
 
 Generator.prototype.addSubModuleNavToIndex = function (url, linkName) {
-  try {
-    
+  try {    
     var fullPath = path.join('src', 'index.html');
     console.log("Script-base -addSubModuleNavToIndex - :: url =  " + url + " and linkName == " + linkName);
-    console.log("fullPath == " + fullPath);
-    
+    console.log("fullPath == " + fullPath);    
     angularUtils.rewriteFile({
       file: fullPath,
       needle: '</ul><!--Insert SubModules above this -->',
@@ -130,9 +129,6 @@ Generator.prototype.addSubModuleNavToIndex = function (url, linkName) {
   } catch (e) {
     console.log('\nUnable to find '.yellow + fullPath + '. Reference to '.yellow + url + " OR  " + linkName + '.js ' + 'not added.\n'.yellow);
   }
-
-
-
 };
 
 
@@ -158,5 +154,22 @@ Generator.prototype.addSubModuleToAppJS = function (appname,submodulename) {
   }
 };
 
-
+Generator.prototype.addThemeToAppJS = function (appName,themeName) {
+  try {
+    
+    var fullPath = path.join('src/app', 'app.js');
+    console.log(" -------->>>>>  addThemeToAppJS :: fullPath = " + fullPath);
+    console.log(" addThemeToAppJS :: appName = " + appName);
+    console.log(" addThemeToAppJS :: themeName = " + themeName);
+    angularUtils.rewriteFile({
+      file: fullPath,
+      needle: '//insert here',
+      splicable: [
+        '\'' +  _.classify(appName)+ 'App.' + themeName + '\'' + ',' 
+      ]
+    });
+  } catch (e) {
+    console.log('\nUnable to find '.yellow + fullPath + '. Reference to '.yellow + appname + ' or  ' + submodulename  + 'not added.\n'.yellow);
+  }
+};
 

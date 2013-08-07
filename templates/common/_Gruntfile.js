@@ -90,7 +90,7 @@ module.exports = function ( grunt ) {
         commitMessage: 'chore(release): v%VERSION%',
         commitFiles: [
           "package.json", 
-          "client/bower.json"
+          "bower.json"
         ],
         createTag: false,
         tagName: 'v%VERSION%',
@@ -270,8 +270,7 @@ module.exports = function ( grunt ) {
      * point (!); this is useful when code comes from a third party but is
      * nonetheless inside `src/`.
      */
-    jshint: {
-      src: [ 
+    jshint: { src: [ 
         '<%= app_files.js %>'
       ],
       test: [
@@ -287,7 +286,7 @@ module.exports = function ( grunt ) {
         noarg: true,
         sub: true,
         boss: true,
-        eqnull: true
+        eqnull: true 
       },
       globals: {}
     },
@@ -598,6 +597,7 @@ module.exports = function ( grunt ) {
       return file.replace( dirRE, '' );
     });
     var cssFiles = filterForCSS( this.filesSrc ).map( function ( file ) {
+      file = file.replace('src/','');
       return file.replace( dirRE, '' );
     });
 
