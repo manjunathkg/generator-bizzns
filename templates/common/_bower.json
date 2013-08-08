@@ -15,7 +15,8 @@
     "angular-resource": "~1.0.7",
     "angular-cookies": "~1.0.7",
     "bootstrap-sass": "~2.3.1",
-    "angular-sanitize": "~1.0.7"
+    "angular-sanitize": "~1.0.7",
+    "firebase" :"~1.0.2"
   },
   "dependencies": {    
     "angular": "~1.0.7",
@@ -29,7 +30,8 @@
     "angular-resource": "~1.0.7",
     "angular-cookies": "~1.0.7",
     "bootstrap-sass": "~2.3.1",
-    "angular-sanitize": "~1.0.7"
+    "angular-sanitize": "~1.0.7",
+    "firebase" :"~1.0.2"
   }
 }
 

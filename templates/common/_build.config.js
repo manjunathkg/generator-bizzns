@@ -63,7 +63,8 @@ module.exports = {
       'vendor/angular-ui-utils/modules/route/route.js',
       'vendor/firebase/firebase.js',
       'vendor/angular-fire/angularFire.js',
-      'vendor/mongolab/mongolab-resource.js'
+      'vendor/mongolab/mongolab-resource.js',
+      'vendor/jquery/jquery.min.js'
     ],
     css: [
       'src/**/*.css'
