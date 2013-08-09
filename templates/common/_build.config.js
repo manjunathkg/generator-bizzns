@@ -64,7 +64,11 @@ module.exports = {
       'vendor/firebase/firebase.js',
       'vendor/angular-fire/angularFire.js',
       'vendor/mongolab/mongolab-resource.js',
-      'vendor/jquery/jquery.min.js'
+      'vendor/jquery/jquery.min.js',
+      'vendor/bootstrap/js/bootstrap-dropdown.js',
+      'vendor/bootstrap/js/bootstrap-alert.js',
+      'vendor/bootstrap/js/bootstrap-carousel.js',
+      'vendor/bootstrap/js/bootstrap-modal.js'
     ],
     css: [
       'src/**/*.css'

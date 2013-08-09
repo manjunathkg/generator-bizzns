@@ -42,12 +42,20 @@ angular.module('<%= _.classify(appname) %>App', [
 })
  
 .controller( '<%= _.classify(appname) %>AppCtrl', 
-	function AppCtrl ( $scope, $location,angularFire,firebaseURL,firebaseService ) {
+	function AppCtrl ( $scope,$rootScope, $location, $state, $stateParams, security, breadcrumbs, notifications, httpRequestTracker, angularFire,firebaseURL,firebaseService ) {
+
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
+    $rootScope.isAuthenticated = security.isAuthenticated;
+    $rootScope.isAdmin = security.isAdmin;
+    
+
 
      //var promise = angularFire(firebaseURL, $scope, 'bizzns', []);
-    var promise = firebaseService.getFire("Buzz3", $scope, "bizzns"  );
+    var promise = firebaseService.getFire("<%= _.classify(appname) %>", $rootScope, "app"  );
 
     promise.then(function() {
+     // $rootScope.data =  firebaseService.getFirebaseCollection("Buzz3", $scope, "mainnav"  ); 
 
     // Add a new item by simply modifying the model directly.
       // $scope.bizzns.push({name: "Buzz3", desc: " is awesome!"});
