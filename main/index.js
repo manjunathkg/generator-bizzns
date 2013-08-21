@@ -16,9 +16,9 @@ function Generator(args, options) {
   ScriptBase.apply(this, arguments);
   
   //copy over server files
-  this.hookFor('bizzns:server', {
-     args: args
-  });
+  // this.hookFor('bizzns:server', {
+  //    args: args
+  // });
 }
 
 util.inherits(Generator, ScriptBase);

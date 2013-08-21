@@ -38,7 +38,7 @@ Generator.prototype.createSubmoduleFiles = function createSubmoduleFiles() {
 	 console.log("appname = " + appname);
    console.log("moduleFileName = " + moduleFileName);
    this.addSubModuleToAppJS(appname, moduleFileName);					   //update app.js
-	 this.addSubModuleNavToIndex(moduleFileName, _.capitalize(lastWord));  //update index.html
+	 //this.addSubModuleNavToIndex(moduleFileName, _.capitalize(lastWord));  //update index.html
 	 this.htmlTemplate('submodule/_index.html', '/index.html' );      
    this.appTemplate('submodule/_app', 'app');
 

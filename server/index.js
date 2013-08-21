@@ -61,9 +61,7 @@ var Generator = module.exports = function Generator(args, options) {
   this.hookFor('bizzns:bizServer', {
      args: args
    });
-
-   
-
+ 
  
 };
 

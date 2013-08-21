@@ -10,8 +10,8 @@ angular.module('services.commonServices',
                           'services.localizedMessages',
                           'services.notifications',
                           'services.i18nNotifications',
-                          'services.crudRouteProvider'
-
+                          'services.crudRouteProvider',
+                          'services.settings'
                         ])
     // define the request notification channel for the pub/sub service
     .factory('notificationChannel', ['$rootScope', function ($rootScope) {
