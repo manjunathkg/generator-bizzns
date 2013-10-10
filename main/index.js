@@ -26,6 +26,8 @@ util.inherits(Generator, ScriptBase);
 Generator.prototype.createAppFile = function createAppFile() {
   console.log("******* about to template main app "   );
   this.appTemplate('_app', 'app');
+  this.appTemplate('_states', 'states');
+
   console.log("******* About to template home page");
   this.htmlTemplate('_page.tpl.html', _.classify(this.name)+ 'Home.tpl.html');
    //app spec file

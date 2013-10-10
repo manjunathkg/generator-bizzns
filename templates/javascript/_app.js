@@ -6,16 +6,31 @@ angular.module('<%= _.classify(appname) %>App', [
   //insert here
   'templates-app',  
   'templates-common',
-  'ui.state',
-  'ui.route',
+  'ui.router', 
+  'restangular',
   'services.commonServices' ,
-  'security'
+  'security',
+  'states'
 ])  //module
-.config( function <%= _.classify(appname) %>Config ( $stateProvider,$locationProvider, $urlRouterProvider ) {
-  $locationProvider.html5Mode(true);
+.config( function <%= _.classify(appname) %>Config ( $locationProvider, $urlRouterProvider ) {
+  $locationProvider
+      .html5Mode(false)
+      .hashPrefix('!');;
   $urlRouterProvider.otherwise( '/' );
-}) 
-.constant('firebaseURL',  'https://bizzns.firebaseIO.com/databases/<%= _.classify(appname) %>' )
+})  
+.run(
+  [        '$rootScope', '$state', '$stateParams',
+  function ($rootScope,   $state,   $stateParams) {
+
+    // It's very handy to add references to $state and $stateParams to the $rootScope
+    // so that you can access them from any scope within your applications.For example,
+    // <li ng-class="{ active: $state.includes('contacts.list') }"> will set the <li>
+    // to active whenever 'contacts.list' or one of its decendents is active.
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
+  }]
+)
+.constant('firebaseURL',  'https://bizzns.firebaseIO.com/databases/Manju' )
 .constant('MONGOLAB_CONFIG', {
   baseUrl: '/databases/',
   dbName: '<%= _.classify(appname) %>'
@@ -52,9 +67,9 @@ angular.module('<%= _.classify(appname) %>App', [
 
 
      //var promise = angularFire(firebaseURL, $scope, 'bizzns', []);
-    var promise = firebaseService.getFire("<%= _.classify(appname) %>", $rootScope, "app"  );
+    //var promise = firebaseService.getFire("Manju", $rootScope, "app"  );
 
-    promise.then(function() {
+    //promise.then(function() {
      // $rootScope.data =  firebaseService.getFirebaseCollection("Buzz3", $scope, "mainnav"  ); 
 
     // Add a new item by simply modifying the model directly.
@@ -72,7 +87,7 @@ angular.module('<%= _.classify(appname) %>App', [
       //     $scope.bizzns.push({name: "Buzz3", desc: " is awesome!", test:{type: "object", name:"test"}});
       //     $scope.bizzns.push({name: "Buzz3-2", desc: " is awesome!-2", test:{type: "object-2", name:"test-2"}});
       //     $scope.bizzns.push({name: "Buzz3-3", desc: " is awesome!-3", test:{type: "object-3", name:"test-3"}});
-    });  //end of promise resolve
+   //});  //end of promise resolve
 
 
   }) //End of AppCtrl

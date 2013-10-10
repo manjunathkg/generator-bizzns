@@ -56,13 +56,7 @@ var Generator = module.exports = function Generator(args, options) {
     this.env.options.minsafe = this.options.minsafe;
     args.push('--minsafe');
   }
- 
-
-  this.hookFor('bizzns:bizServer', {
-     args: args
-   });
-
-   
+  
   this.hookFor('bizzns:bizResources', {
      args: args
    });

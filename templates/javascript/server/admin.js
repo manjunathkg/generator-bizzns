@@ -13,7 +13,7 @@ resource.use('admin');
 resource.use('account', { datasource: "fs"});
 resource.use('creature', { datasource: "fs"});
 
-resource.admin.start(function (err, server) {
+resource.admin.start({port:5000},function (err, server) {
   var address = server.address();
   resource.logger.info('admin server started on http://' + address.address + ":" + address.port + "/admin")
   resource.logger.help('username and password are admin');

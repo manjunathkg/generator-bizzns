@@ -22,11 +22,12 @@ module.exports = {
    */
   app_files: {
     js: [ 'src/**/*.js', 
+          'src/**/*.json',
           '!src/**/*/*.spec.js', 
           '!**/*/Gruntfile.js',
           '!**/*/build.config.js',
-          '!**/karma*.js',
-          '!**bower*.js'
+          '!**/*/karma*.js',
+          '!**/*/bower*.js'
        ],
     jsunit: [ 'src/**/*.spec.js' ],
     
@@ -68,7 +69,10 @@ module.exports = {
       'vendor/bootstrap/js/bootstrap-dropdown.js',
       'vendor/bootstrap/js/bootstrap-alert.js',
       'vendor/bootstrap/js/bootstrap-carousel.js',
-      'vendor/bootstrap/js/bootstrap-modal.js'
+      'vendor/bootstrap/js/bootstrap-modal.js',
+      'vendor/underscore/underscore-min.js',
+      'vendor/underscore/underscore-min.map',
+      'vendor/restangular/restangular.min.js'
     ],
     css: [
       'src/**/*.css'

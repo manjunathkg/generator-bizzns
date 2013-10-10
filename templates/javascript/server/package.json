@@ -15,7 +15,12 @@
     "open": "0.0.3",
     "request": "~2.16.6",
     "resource": "~0.4.2",
-    "resources": "~0.4.2" 
+    "locomotive": "0.3.x",
+    "express": "3.x.x",
+    "connect-powered-by": "0.1.x",
+    "ejs": "0.8.x",
+    "resources": "~0.4.2" ,
+    "argo" : "*"
   },
   "devDependencies": {
     "rewire": "~1.0.3",
@@ -24,7 +29,11 @@
     "grunt-contrib-jshint": "~0.2.0",
     "grunt-contrib-nodeunit": "~0.1.2",
     "resource": "~0.4.2",
-    "resources": "~0.4.2" 
+    "resources": "~0.4.2",
+    "locomotive": "0.3.x",
+    "express": "3.x.x",
+    "connect-powered-by": "0.1.x",
+    "ejs": "0.8.x" 
   },
   "bin": {
     "big": "./bin/big"

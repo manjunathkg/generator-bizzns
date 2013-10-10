@@ -1,0 +1,46 @@
+/*------------------------------------------------------------------
+
+[Custom Stylesheet]
+
+
+Last change:	03/25/2013
+Assigned to:	You
+
+-------------------------------------------------------------------*/
+
+html, body {
+    height: 100%;
+}
+
+.wrapper,
+.wrapper .container {
+    width: 100%;
+}
+
+.wrapper.primary {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0px 0px -50px 0px;
+}
+
+.wrapper.primary .container {
+    padding: 0px 0px 5px 0px;
+}
+
+.wrapper.secondary {
+    height: 50px;
+}
+
+/* Uncomment if supporting a fixed width container */
+
+/*
+.wrapper {
+    min-width: 960px;
+}
+
+.wrapper .container {
+    width: 960px;
+    margin: 0px auto;
+}
+*/

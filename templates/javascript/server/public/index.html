@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html ng-app="ManjuApp" ng-controller="ManjuAppCtrl">
+  <head>
+    <title>ManjuApp</title>
+
+
+    <!-- font awesome from BootstrapCDN -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+    <!-- compiled CSS -->
+
+    <!--  REMOVE the space bewteen < and %  -->
+      
+      <link rel="stylesheet" type="text/css" href="/static/assets/admin/css/base-admin-2-responsive.css" /> 
+      <link rel="stylesheet" type="text/css" href="/static/assets/admin/css/base-admin-2.css" /> 
+      <link rel="stylesheet" type="text/css" href="/static/assets/admin/css/bootstrap-responsive.min.css" /> 
+      <link rel="stylesheet" type="text/css" href="/static/assets/admin/css/bootstrap.min.css" /> 
+      <link rel="stylesheet" type="text/css" href="/static/assets/admin/css/custom.css" /> 
+      <link rel="stylesheet" type="text/css" href="/static/assets/admin/css/font-awesome.min.css" /> 
+      <link rel="stylesheet" type="text/css" href="/static/assets/admin/css/jquery-ui-1.10.0.custom.min.css" /> 
+      <link rel="stylesheet" type="text/css" href="/static/assets/admin/css/pages/dashboard.css" /> 
+      <link rel="stylesheet" type="text/css" href="/static/assets/admin/css/pages/plans.css" /> 
+      <link rel="stylesheet" type="text/css" href="/static/assets/admin/css/pages/pricing.css" /> 
+      <link rel="stylesheet" type="text/css" href="/static/assets/admin/css/pages/reports.css" /> 
+      <link rel="stylesheet" type="text/css" href="/static/assets/admin/css/pages/signin.css" /> 
+      <link rel="stylesheet" type="text/css" href="/static/assets/admin/css/ui-lightness/jquery-ui-1.10.0.custom.min.css" /> 
+      <link rel="stylesheet" type="text/css" href="/static/assets/css/stickyfooter.css" /> 
+      <link rel="stylesheet" type="text/css" href="/static/assets/Manju.css" /> 
+     <!--  END - REMOVE the space bewteen < and %  -->
+
+
+    <!--[if IE 7>
+    <link rel="stylesheet" href="assets/font-awesome-ie7.min.css />
+    <![endif]-->
+
+    <!-- compiled JS -->
+    <!--  REMOVE the [ and ] chars bewteen < and %   --> 
+      
+      <script type="text/javascript" src="/static/vendor/angular/angular.js"></script>
+      <script type="text/javascript" src="/static/vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+      <script type="text/javascript" src="/static/vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js"></script>
+      <script type="text/javascript" src="/static/vendor/angular-ui-router/release/angular-ui-router.js"></script>
+      <script type="text/javascript" src="/static/vendor/angular-ui-utils/modules/route/route.js"></script>
+      <script type="text/javascript" src="/static/vendor/firebase/firebase.js"></script>
+      <script type="text/javascript" src="/static/vendor/angular-fire/angularFire.js"></script>
+      <script type="text/javascript" src="/static/vendor/mongolab/mongolab-resource.js"></script>
+      <script type="text/javascript" src="/static/vendor/jquery/jquery.min.js"></script>
+      <script type="text/javascript" src="/static/vendor/bootstrap/js/bootstrap-dropdown.js"></script>
+      <script type="text/javascript" src="/static/vendor/bootstrap/js/bootstrap-alert.js"></script>
+      <script type="text/javascript" src="/static/vendor/bootstrap/js/bootstrap-carousel.js"></script>
+      <script type="text/javascript" src="/static/vendor/bootstrap/js/bootstrap-modal.js"></script>
+      <script type="text/javascript" src="/static/src/app/admin/admin.js"></script>
+      <script type="text/javascript" src="/static/src/app/admin/projects/admin-projects.js"></script>
+      <script type="text/javascript" src="/static/src/app/admin/users/admin-users-edit.js"></script>
+      <script type="text/javascript" src="/static/src/app/admin/users/admin-users.js"></script>
+      <script type="text/javascript" src="/static/src/app/app.js"></script>
+      <script type="text/javascript" src="/static/src/app/dashboard/dashboard.js"></script>
+      <script type="text/javascript" src="/static/src/app/projects/productbacklog/productbacklog.js"></script>
+      <script type="text/javascript" src="/static/src/app/projects/projects.js"></script>
+      <script type="text/javascript" src="/static/src/app/projects/sprints/sprints.js"></script>
+      <script type="text/javascript" src="/static/src/app/projects/sprints/tasks/tasks.js"></script>
+      <script type="text/javascript" src="/static/src/app/projectsinfo/projectsinfo.js"></script>
+      <script type="text/javascript" src="/static/src/app/route1/app.js"></script>
+      <script type="text/javascript" src="/static/src/app/route1/route1-controllers.js"></script>
+      <script type="text/javascript" src="/static/src/app/route1/route1-directives.js"></script>
+      <script type="text/javascript" src="/static/src/app/route1/route1-filters.js"></script>
+      <script type="text/javascript" src="/static/src/app/route1/route1-services.js"></script>
+      <script type="text/javascript" src="/static/src/app/route1/route1.js"></script>
+      <script type="text/javascript" src="/static/src/app/route2/app.js"></script>
+      <script type="text/javascript" src="/static/src/app/route2/route2-controllers.js"></script>
+      <script type="text/javascript" src="/static/src/app/route2/route2-directives.js"></script>
+      <script type="text/javascript" src="/static/src/app/route2/route2-filters.js"></script>
+      <script type="text/javascript" src="/static/src/app/route2/route2-services.js"></script>
+      <script type="text/javascript" src="/static/src/app/route2/route2.js"></script>
+      <script type="text/javascript" src="/static/src/app/route3/app.js"></script>
+      <script type="text/javascript" src="/static/src/app/route3/route3-controllers.js"></script>
+      <script type="text/javascript" src="/static/src/app/route3/route3-directives.js"></script>
+      <script type="text/javascript" src="/static/src/app/route3/route3-filters.js"></script>
+      <script type="text/javascript" src="/static/src/app/route3/route3-services.js"></script>
+      <script type="text/javascript" src="/static/src/app/route3/route3.js"></script>
+      <script type="text/javascript" src="/static/src/app/route4/app.js"></script>
+      <script type="text/javascript" src="/static/src/app/route4/route4-controllers.js"></script>
+      <script type="text/javascript" src="/static/src/app/route4/route4-directives.js"></script>
+      <script type="text/javascript" src="/static/src/app/route4/route4-filters.js"></script>
+      <script type="text/javascript" src="/static/src/app/route4/route4-services.js"></script>
+      <script type="text/javascript" src="/static/src/app/route4/route4.js"></script>
+      <script type="text/javascript" src="/static/src/common/admin/admin.js"></script>
+      <script type="text/javascript" src="/static/src/common/admin/footer/footer.js"></script>
+      <script type="text/javascript" src="/static/src/common/admin/mainnav/mainnav.js"></script>
+      <script type="text/javascript" src="/static/src/common/admin/topHeader/topheader.js"></script>
+      <script type="text/javascript" src="/static/src/common/directives/crud/crud.js"></script>
+      <script type="text/javascript" src="/static/src/common/directives/crud/crudButtons.js"></script>
+      <script type="text/javascript" src="/static/src/common/directives/crud/edit.js"></script>
+      <script type="text/javascript" src="/static/src/common/directives/util/gravatar.js"></script>
+      <script type="text/javascript" src="/static/src/common/directives/util/modal.js"></script>
+      <script type="text/javascript" src="/static/src/common/projects/footer/footer.js"></script>
+      <script type="text/javascript" src="/static/src/common/projects/mainnav/mainnav.js"></script>
+      <script type="text/javascript" src="/static/src/common/projects/projects.js"></script>
+      <script type="text/javascript" src="/static/src/common/projects/topHeader/topheader.js"></script>
+      <script type="text/javascript" src="/static/src/common/resources/backlog.js"></script>
+      <script type="text/javascript" src="/static/src/common/resources/projects.js"></script>
+      <script type="text/javascript" src="/static/src/common/resources/sprints.js"></script>
+      <script type="text/javascript" src="/static/src/common/resources/tasks.js"></script>
+      <script type="text/javascript" src="/static/src/common/resources/users.js"></script>
+      <script type="text/javascript" src="/static/src/common/services/breadcrumbs/breadcrumbs.js"></script>
+      <script type="text/javascript" src="/static/src/common/services/common/commonServices.js"></script>
+      <script type="text/javascript" src="/static/src/common/services/crud.js"></script>
+      <script type="text/javascript" src="/static/src/common/services/crud/crud.js"></script>
+      <script type="text/javascript" src="/static/src/common/services/crud/crudRouteProvider.js"></script>
+      <script type="text/javascript" src="/static/src/common/services/exceptionHandler.js"></script>
+      <script type="text/javascript" src="/static/src/common/services/exceptionHandler/exceptionHandler.js"></script>
+      <script type="text/javascript" src="/static/src/common/services/exceptionHandler/i18nNotifications.js"></script>
+      <script type="text/javascript" src="/static/src/common/services/exceptionHandler/localizedMessages.js"></script>
+      <script type="text/javascript" src="/static/src/common/services/exceptionHandler/notifications.js"></script>
+      <script type="text/javascript" src="/static/src/common/services/httpRequestTracker/httpRequestTracker.js"></script>
+      <script type="text/javascript" src="/static/src/common/services/plusOne/plusOne.js"></script>
+      <script type="text/javascript" src="/static/src/common/services/security/authorization.js"></script>
+      <script type="text/javascript" src="/static/src/common/services/security/index.js"></script>
+      <script type="text/javascript" src="/static/src/common/services/security/interceptor.js"></script>
+      <script type="text/javascript" src="/static/src/common/services/security/login/LoginFormController.js"></script>
+      <script type="text/javascript" src="/static/src/common/services/security/login/login.js"></script>
+      <script type="text/javascript" src="/static/src/common/services/security/login/toolbar.js"></script>
+      <script type="text/javascript" src="/static/src/common/services/security/retryQueue.js"></script>
+      <script type="text/javascript" src="/static/src/common/services/security/security.js"></script>
+      <script type="text/javascript" src="/static/src/common/services/settings/settings.js"></script>
+      <script type="text/javascript" src="/static/src/common/services/titleService/titleService.js"></script>
+      <script type="text/javascript" src="/static/templates-common.js"></script>
+      <script type="text/javascript" src="/static/templates-app.js"></script>
+      <!--  END - REMOVE the space bewteen < and %  -->
+
+
+    <!-- it's stupid to have to load it here, but this is for the +1 button -->
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+      { "parsetags": "explicit" }
+    </script>
+  </head>
+  <body>
+    <projects-top-header></projects-top-header>
+    <projects-mainnav></projects-mainnav>
+
+    <div class="container" ui-view>
+      
+      <ul ng-controller="ManjuAppCtrl">
+         <li>
+          <div>bizzns here is </div>
+          <hr/>
+          <div>
+            {{bizzns}}
+
+          </div>
+        </li>
+      </ul>
+
+    </div>
+
+    <projects-footer></projects-footer>
+
+    <script src="http://localhost:35729/livereload.js"></script>
+    
+  </body>
+</html>
